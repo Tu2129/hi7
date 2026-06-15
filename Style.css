@@ -92,6 +92,15 @@ header {
   color: white;
   padding: 5px 5px;
 }
+.add-btn {
+  text-decoration: none;
+  background-color: rgb(0, 17, 255);
+  border-radius: 5px;
+  color: white;
+  padding: 5px 5px;
+  outline: none;
+  border: none;
+}
 #d1:hover {
   background-color: green;
 }
