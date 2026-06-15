@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
+}
+main {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+header {
+  width: 100%;
+  background-color: White;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+}
+.collection {
+  color: rgb(160, 123, 0);
+}
+.card-btn {
+  background-color: rgb(153, 153, 153);
+}
+.cards {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: auto;
+  padding: 10px 0;
+  gap: 10px;
+}
+.customized {
+  background-color: rgb(23, 0, 128);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+.custom-shirt {
+  color: white;
+  font-size: 1rem;
+}
+.card-1,
+.card-2,
+.card-3,
+.card-4,
+.card-5,
+.card-6,
+.card-7,
+.card-8 {
+  display: flex;
+  flex: 0 1 20%;
+  min-height: 400px;
+  background-color: rgb(255, 255, 255);
+  flex-direction: column;
+  color: rgb(0, 0, 0);
+}
+.inner-card {
+  flex: 0 1 100%;
+  min-height: 200px;
+}
+.inline-card {
+  flex: 0 1 100%;
+  height: auto;
+  padding: 20px 10px;
+}
+.shirt-1 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.italic {
+  font-family: "Times New Roman", Times, serif;
+}
+.description {
+  font-family: "Times New Roman", Times, serif;
+  margin-bottom: 10px;
+}
+.price {
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+  margin-bottom: 10px;
+}
+#d1 {
+  text-decoration: none;
+  background-color: rgb(0, 17, 255);
+  border-radius: 5px;
+  color: white;
+  padding: 5px 5px;
+}
+#d1:hover {
+  background-color: green;
+}
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+body {
+  background-color: rgb(255, 255, 255);
+}
+.video,
+.video-1 {
+  display: none;
+}
+.plain-card {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 20px 0;
+}
+.plain,
+.plain-tee {
+  flex: 0 1 45%;
+  min-height: 400px;
+  background-color: white;
+}
+
+@media (max-width: 768px) {
+  .card-1,
+  .card-2,
+  .card-3,
+  .card-4,
+  .card-5,
+  .card-6,
+  .card-7,
+  .card-8 {
+    display: flex;
+    flex: 0 1 80%;
+    min-height: 400px;
+    flex-direction: column;
+    color: rgb(0, 0, 0);
+  }
+  .cards {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 0;
+    gap: 10px;
+  }
+  .video,
+  .video-1 {
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+    height: 500px;
+    padding: 0 37px;
+    background-color: rgb(153, 153, 153);
+  }
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .plain-card {
+    gap: 10px;
+  }
+  .plain,
+  .plain-tee {
+    flex: 0 1 80%;
+    min-height: 400px;
+    background-color: white;
+  }
+}
