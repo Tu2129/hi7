@@ -1,4 +1,4 @@
-const PAYSTACK_KEY = "pk_test_b8caca04e47c14d7e98e5ef05e5ac86d5e4e15aa";
+const PAYSTACK_PUBLIC_KEY = "pk_test_b8caca04e47c14d7e98e5ef05e5ac86d5e4e15aa";
 // local government areas
 const lgaData = {
   Lagos: [
@@ -184,4 +184,8 @@ function checkOut() {
   const stateName = stateVal.split(":")[0];
   const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
   const total = subtotal + deliveryFee;
+
+  const handler = PaystackPop.setup({
+    key: PAYSTACK_PUBLIC_KEY,
+  });
 }
