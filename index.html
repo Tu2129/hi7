@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Hi7</title>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
 </head>
 
 <body>
@@ -202,7 +203,7 @@
                 <div class="form-now">
                     <div class="form-group">
                         <label>Street Address</label>
-                        <input type="text" id="streetAdress" placeholder="e.g 12 Allen Avenue, Ikeja" />
+                        <input type="text" id="streetAddress" placeholder="e.g 12 Allen Avenue, Ikeja" />
                     </div>
                 </div>
             </div>
@@ -212,8 +213,10 @@
                 <div class="summary-row total"><span>Total</span><span id="cartTotal">#0</span></div>
             </div>
             <div class="checkout-row">
+                <input type="text" id="customerName" placeholder="Your full name" />
+                <input type="tel" id="customerPhone" placeholder="Phone number e.g 08012345678" />
                 <input type="email" id="email" placeholder="Email for receipt" />
-                <button class="checkout-btn" onclick="checkout()">Pay Now</button>
+                <button class="checkout-btn" onclick="checkOut()">Pay Now</button>
             </div>
         </div>
     </main>

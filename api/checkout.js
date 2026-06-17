@@ -1,8 +1,4 @@
-// api/checkout.js
-// This file runs on the server — nobody can see it
-
-export default async function handler(req, res) {
-  // Only allow POST requests
+module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -11,6 +7,8 @@ export default async function handler(req, res) {
     const {
       reference,
       email,
+      name,
+      phone,
       items,
       subtotal,
       deliveryFee,
@@ -20,8 +18,15 @@ export default async function handler(req, res) {
       address,
     } = req.body;
 
-    // ── STEP 1: Verify payment with Paystack ──
-    // This confirms the payment is real and not fake
+    console.log("Step 1: Verifying payment with Paystack...");
+    console.log("Reference:", reference);
+    console.log(
+      "PAYSTACK_SECRET_KEY exists:",
+      !!process.env.PAYSTACK_SECRET_KEY,
+    );
+    console.log("SUPABASE_URL:", process.env.SUPABASE_URL);
+
+    // Verify payment with Paystack
     const paystackRes = await fetch(
       `https://api.paystack.co/transaction/verify/${reference}`,
       {
@@ -32,12 +37,17 @@ export default async function handler(req, res) {
     );
 
     const paystackData = await paystackRes.json();
+    console.log("Paystack response status:", paystackData.status);
+    console.log("Paystack transaction status:", paystackData.data?.status);
 
     if (!paystackData.status || paystackData.data.status !== "success") {
-      return res.status(400).json({ error: "Payment verification failed" });
+      return res
+        .status(400)
+        .json({ error: "Payment verification failed", paystackData });
     }
 
-    // ── STEP 2: Save order to Supabase ──
+    console.log("Step 2: Saving to Supabase...");
+
     const supabaseRes = await fetch(
       `${process.env.SUPABASE_URL}/rest/v1/orders`,
       {
@@ -50,6 +60,8 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           reference,
           email,
+          name,
+          phone,
           items,
           subtotal,
           delivery_fee: deliveryFee,
@@ -61,13 +73,19 @@ export default async function handler(req, res) {
       },
     );
 
+    const supabaseText = await supabaseRes.text();
+    console.log("Supabase status:", supabaseRes.status);
+    console.log("Supabase response:", supabaseText);
+
     if (!supabaseRes.ok) {
-      return res.status(500).json({ error: "Failed to save order" });
+      return res
+        .status(500)
+        .json({ error: "Failed to save order", supabaseText });
     }
 
-    // ── STEP 3: Send success back to the browser ──
     return res.status(200).json({ success: true });
   } catch (err) {
+    console.log("Error:", err.message);
     return res.status(500).json({ error: err.message });
   }
-}
+};

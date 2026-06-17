@@ -61,6 +61,7 @@ function addToCart(btn, name, price) {
   } else {
     cart.push({ name, price, qty: 1 });
   }
+
   btn.textContent = "Added";
   btn.classList.add("added");
   setTimeout(() => {
@@ -69,44 +70,45 @@ function addToCart(btn, name, price) {
   }, 1000);
   renderCart();
   showCart();
+  document.getElementById("cartSection").scrollIntoView({ behavior: "smooth" });
 }
 
 // Render Cart Items
 function renderCart() {
   const list = document.getElementById("cartItems");
-  list.innerHtml = "";
-  let subTotal = 0;
+  list.innerHTML = "";
+  let subtotal = 0;
 
   cart.forEach((item, i) => {
     subtotal += item.price * item.qty;
     const row = document.createElement("div");
     row.className = "cart-row";
     row.innerHTML = `
-    <span class="cart-row-name">${item.name}</span>
-    <span class="cart-row-price">${item.price.toLocaleString()}</span>
-    <div class="qty-controls">
-    <button class="qty-btn" onclick="changeQty(${i}, -1)">-</button>
-    <span class="qty-count">${item.qty}</span>
-    <button class="qty-btn" onclick="changeQty(${i}, 1)">+</button>
-    </div>
-    <button class="remove-btn onclick="removeItem(${i})">X</button>
+      <span class="cart-row-name">${item.name}</span>
+      <span class="cart-row-price">₦${item.price.toLocaleString()}</span>
+      <div class="qty-controls">
+        <button class="qty-btn" onclick="changeQty(${i}, -1)">−</button>
+        <span class="qty-count">${item.qty}</span>
+        <button class="qty-btn" onclick="changeQty(${i}, 1)">+</button>
+      </div>
+      <button class="remove-btn" onclick="removeItem(${i})">✕</button>
     `;
     list.appendChild(row);
   });
 
   document.getElementById("subtotal").textContent =
-    "#" + subtotal.toLocaleString();
+    "₦" + subtotal.toLocaleString();
   document.getElementById("deliveryFee").textContent =
-    "#" + deliveryFee.toLocaleString();
+    "₦" + deliveryFee.toLocaleString();
   document.getElementById("cartTotal").textContent =
-    "#" + (subtotal + deliveryFee).toLocaleString();
+    "₦" + (subtotal + deliveryFee).toLocaleString();
   document.getElementById("bubbleCount").textContent = cart.reduce(
     (s, i) => s + i.qty,
     0,
   );
 }
 // Update Delivery fee When State Changes
-function UpdateDeliveryFee() {
+function updateDeliveryFee() {
   const val = document.getElementById("stateSelect").value;
   if (!val) {
     deliveryFee = 0;
@@ -140,7 +142,7 @@ function changeQty(index, delta) {
 function removeItem(index) {
   cart.splice(index, 1);
   renderCart();
-  if (cart.length === 0) hidecart();
+  if (cart.length === 0) hideCart();
 }
 
 function showCart() {
@@ -154,11 +156,63 @@ function hideCart() {
     document.getElementById("cartBubble").style.display = "block";
 }
 
+async function handlePayment(response) {
+  try {
+    const res = await fetch("/api/checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        reference: response.reference,
+        email: document.getElementById("email").value,
+        name: document.getElementById("customerName").value.trim(),
+        phone: document.getElementById("customerPhone").value.trim(),
+        items: cart.map((i) => `${i.name} x${i.qty}`).join(", "),
+        subtotal: cart.reduce((s, i) => s + i.price * i.qty, 0),
+        deliveryFee: deliveryFee,
+        total: cart.reduce((s, i) => s + i.price * i.qty, 0) + deliveryFee,
+        state: document.getElementById("stateSelect").value.split(":")[0],
+        lga: document.getElementById("lgaSelect").value,
+        address: document.getElementById("streetAddress").value.trim(),
+      }),
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      alert("✅ Payment successful! Ref: " + response.reference);
+      cart = [];
+      deliveryFee = 0;
+      renderCart();
+      hideCart();
+      document.getElementById("customerName").value = "";
+      document.getElementById("customerPhone").value = "";
+      document.getElementById("stateSelect").value = "";
+      document.getElementById("lgaSelect").innerHTML =
+        '<option value="">-- Select State First --</option>';
+      document.getElementById("streetAddress").value = "";
+      document.getElementById("email").value = "";
+    } else {
+      alert(
+        "Payment received but something went wrong. Contact us with ref: " +
+          response.reference,
+      );
+    }
+  } catch (err) {
+    alert(
+      "Payment received but something went wrong. Contact us with ref: " +
+        response.reference,
+    );
+  }
+}
+
+// ── CHECKOUT ──
 function checkOut() {
   const email = document.getElementById("email").value.trim();
   const stateVal = document.getElementById("stateSelect").value;
   const lga = document.getElementById("lgaSelect").value;
   const address = document.getElementById("streetAddress").value.trim();
+  const name = document.getElementById("customerName").value.trim();
+  const phone = document.getElementById("customerPhone").value.trim();
 
   if (!email || !email.includes("@")) {
     alert("Please enter a valid email.");
@@ -176,16 +230,32 @@ function checkOut() {
     alert("Please enter your street address.");
     return;
   }
+  if (!name) {
+    alert("Please enter your name.");
+    return;
+  }
+  if (!phone) {
+    alert("Please enter your phone number.");
+    return;
+  }
   if (cart.length === 0) {
     alert("Your cart is empty.");
     return;
   }
 
-  const stateName = stateVal.split(":")[0];
   const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
   const total = subtotal + deliveryFee;
 
   const handler = PaystackPop.setup({
     key: PAYSTACK_PUBLIC_KEY,
+    email: email,
+    amount: total * 100,
+    currency: "NGN",
+    callback: function (response) {
+      handlePayment(response);
+    },
+    onClose: function () {},
   });
+
+  handler.openIframe();
 }
