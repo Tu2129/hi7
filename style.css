@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -21,6 +23,31 @@ header {
 .collection {
   color: rgb(160, 123, 0);
 }
+#top {
+  outline: none;
+  text-decoration: none;
+  background-color: orange;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.cart-toggle {
+  outline: none;
+  border: none;
+  background-color: blue;
+  border-radius: 5px;
+  padding: 5px;
+}
+#top:hover {
+  background-color: green;
+  color: white;
+}
 .card-btn {
   background-color: rgb(153, 153, 153);
 }
@@ -42,6 +69,7 @@ header {
   padding: 10px 0;
 }
 .custom-shirt {
+  margin-top: 10px;
   color: white;
   font-size: 1rem;
 }
@@ -130,6 +158,69 @@ body {
   flex: 0 1 45%;
   min-height: 400px;
   background-color: white;
+}
+.arrange {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ray {
+  width: 300px;
+  display: flex;
+  align-items: center;
+}
+#cartBubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+h3 {
+  color: rgb(0, 17, 255);
+}
+.checkout-btn {
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background-color: blue;
+  text-align: center;
+  border-radius: 5px;
+  align-items: center;
+}
+#stateSelect {
+  width: 100%;
+  background-color: rgb(173, 173, 173);
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+#lgaSelect {
+  width: 100%;
+  background-color: rgb(173, 173, 173);
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+#streetAddress {
+  width: 100%;
+  background-color: rgb(173, 173, 173);
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+#customerName,
+#customerPhone,
+#email {
+  margin-top: 10px;
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: rgb(173, 173, 173);
+  padding: 10px;
+  border-radius: 10px;
 }
 
 @media (max-width: 768px) {
