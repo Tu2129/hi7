@@ -1,52 +1,107 @@
 const PAYSTACK_PUBLIC_KEY = "pk_test_b8caca04e47c14d7e98e5ef05e5ac86d5e4e15aa";
 // local government areas
 const lgaData = {
-  Lagos: [
-    "Ikeja",
-    "Lagos Island",
-    "Surulere",
-    "Lekki",
-    "Alimosho",
-    "Mushin",
-    "Oshodi",
-    "Badagry",
-    "Epe",
-    "Ikorodu",
-  ],
-  Abuja: ["Abuja Municipal", "Bwari", "Gwagwalada", "Kuje", "Kwali", "Abaji"],
-  Rivers: [
-    "Port Harcourt",
-    "Obio-Akpor",
-    "Eleme",
-    "Ikwerre",
-    "Etche",
-    "Oyigbo",
-    "Tai",
-  ],
-  Kano: [
-    "Kano Municipal",
-    "Fagge",
-    "Dala",
-    "Gwale",
-    "Tarauni",
-    "Nassarawa",
-    "Ungogo",
-  ],
-  Oyo: ["Ibadan North", "Ibadan South", "Ogbomosho", "Oyo", "Iseyin", "Saki"],
-  Delta: ["Warri", "Sapele", "Asaba", "Ughelli", "Effurun", "Agbor"],
-  Anambra: ["Awka", "Onitsha", "Nnewi", "Ekwulobia", "Aguata", "Idemili"],
-  Enugu: [
-    "Enugu North",
-    "Enugu South",
-    "Igbo-Eze",
-    "Nkanu",
-    "Udi",
-    "Igbo-Etiti",
-  ],
-  Kaduna: ["Kaduna North", "Kaduna South", "Zaria", "Kafanchan", "Kagoro"],
-  Imo: ["Owerri", "Orlu", "Okigwe", "Mbaise", "Mbano", "Ngor Okpala"],
-  Ogun: ["Abeokuta", "Sagamu", "Ijebu Ode", "Ota", "Ilaro", "Shagamu"],
-  Edo: ["Benin City", "Ekpoma", "Auchi", "Uromi", "Esan", "Igueben"],
+  Lagos: {
+    Ikeja: 1500,
+    "Lagos Island": 2000,
+    Surulere: 1800,
+    Lekki: 2500,
+    Alimosho: 2000,
+    Mushin: 1700,
+    Oshodi: 1600,
+    Badagry: 3000,
+    Epe: 3500,
+    Ikorodu: 3000,
+  },
+  Abuja: {
+    "Abuja Municipal": 2500,
+    Bwari: 3000,
+    Gwagwalada: 3500,
+    Kuje: 3500,
+    Kwali: 4000,
+    Abaji: 4000,
+  },
+  Rivers: {
+    "Port Harcourt": 3000,
+    "Obio-Akpor": 3200,
+    Eleme: 3500,
+    Ikwerre: 3500,
+    Etche: 4000,
+    Oyigbo: 3800,
+    Tai: 4000,
+  },
+  Kano: {
+    "Kano Municipal": 3500,
+    Fagge: 3500,
+    Dala: 3800,
+    Gwale: 3800,
+    Tarauni: 4000,
+    Nassarawa: 4000,
+    Ungogo: 4000,
+  },
+  Oyo: {
+    "Ibadan North": 2000,
+    "Ibadan South": 2000,
+    Ogbomosho: 2500,
+    Oyo: 2800,
+    Iseyin: 3000,
+    Saki: 3500,
+  },
+  Delta: {
+    Warri: 3000,
+    Sapele: 3200,
+    Asaba: 3500,
+    Ughelli: 3200,
+    Effurun: 3000,
+    Agbor: 3500,
+  },
+  Anambra: {
+    Awka: 2800,
+    Onitsha: 2500,
+    Nnewi: 2800,
+    Ekwulobia: 3000,
+    Aguata: 3000,
+    Idemili: 3000,
+  },
+  Enugu: {
+    "Enugu North": 3000,
+    "Enugu South": 3000,
+    "Igbo-Eze": 3500,
+    Nkanu: 3500,
+    Udi: 3500,
+    "Igbo-Etiti": 3500,
+  },
+  Kaduna: {
+    "Kaduna North": 3500,
+    "Kaduna South": 3500,
+    Zaria: 3800,
+    Kafanchan: 4000,
+    Kagoro: 4000,
+  },
+  Imo: {
+    Owerri: 3000,
+    Orlu: 3200,
+    Okigwe: 3500,
+    Mbaise: 3200,
+    Mbano: 3500,
+    "Ngor Okpala": 3200,
+  },
+  Ogun: {
+    Abeokuta: 1800,
+    Sagamu: 1500,
+    "Ijebu Ode": 2000,
+    Ota: 1600,
+    Ilaro: 2500,
+    Shagamu: 1500,
+  },
+  Edo: {
+    "Benin City": 2800,
+    Ekpoma: 3000,
+    Auchi: 3500,
+    Uromi: 3200,
+    Esan: 3200,
+    Igueben: 3500,
+  },
 };
 
 /* cart and delivery */
@@ -117,18 +172,30 @@ function updateDeliveryFee() {
     renderCart();
     return;
   }
-  const [stateName, fee] = val.split(":");
-  deliveryFee = parseInt(fee);
 
-  const lgas = lgaData[stateName] || [];
+  const lgas = lgaData[val] || {};
   const lgaSelect = document.getElementById("lgaSelect");
   lgaSelect.innerHTML = '<option value="">-- Select LGA --</option>';
-  lgas.forEach((lga) => {
+
+  Object.keys(lgas).forEach((lga) => {
     const opt = document.createElement("option");
     opt.value = lga;
-    opt.textContent = lga;
+    opt.textContent = `${lga} — ₦${lgas[lga].toLocaleString()}`;
     lgaSelect.appendChild(opt);
   });
+
+  deliveryFee = 0;
+  renderCart();
+}
+
+function updateLGAFee() {
+  const stateName = document.getElementById("stateSelect").value;
+  const lga = document.getElementById("lgaSelect").value;
+  if (stateName && lga) {
+    deliveryFee = lgaData[stateName][lga] || 0;
+  } else {
+    deliveryFee = 0;
+  }
   renderCart();
 }
 
@@ -170,7 +237,7 @@ async function handlePayment(response) {
         subtotal: cart.reduce((s, i) => s + i.price * i.qty, 0),
         deliveryFee: deliveryFee,
         total: cart.reduce((s, i) => s + i.price * i.qty, 0) + deliveryFee,
-        state: document.getElementById("stateSelect").value.split(":")[0],
+        state: document.getElementById("stateSelect").value,
         lga: document.getElementById("lgaSelect").value,
         address: document.getElementById("streetAddress").value.trim(),
       }),
