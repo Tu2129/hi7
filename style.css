@@ -6,6 +6,16 @@
   box-sizing: border-box;
   font-family: "poppins", sans-serif;
 }
+.logo {
+  display: none;
+  width: 100px;
+  height: 50px;
+}
+#mage {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
 main {
   width: 100%;
   max-width: 1500px;
