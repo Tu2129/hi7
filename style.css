@@ -36,10 +36,11 @@ header {
 #top {
   outline: none;
   text-decoration: none;
-  background-color: orange;
+  background-color: blue;
   padding: 10px;
   border-radius: 10px;
   margin-top: 15px;
+  color: white;
 }
 .center {
   display: flex;
@@ -53,6 +54,7 @@ header {
   background-color: blue;
   border-radius: 5px;
   padding: 5px;
+  color: white;
 }
 #top:hover {
   background-color: green;
@@ -196,10 +198,15 @@ h3 {
   text-align: center;
   border-radius: 5px;
   align-items: center;
+  color: white;
+}
+.checkout-btn:hover {
+  background-color: green;
 }
 #stateSelect {
   width: 100%;
-  background-color: rgb(173, 173, 173);
+  background-color: rgb(218, 215, 215);
+  margin-bottom: 10px;
   outline: none;
   border: none;
   border-radius: 10px;
@@ -207,7 +214,8 @@ h3 {
 }
 #lgaSelect {
   width: 100%;
-  background-color: rgb(173, 173, 173);
+  background-color: rgb(218, 215, 215);
+  margin-bottom: 10px;
   outline: none;
   border: none;
   border-radius: 10px;
@@ -215,7 +223,8 @@ h3 {
 }
 #streetAddress {
   width: 100%;
-  background-color: rgb(173, 173, 173);
+  margin-bottom: 10px;
+  background-color: rgb(218, 215, 215);
   outline: none;
   border: none;
   border-radius: 10px;
@@ -224,13 +233,27 @@ h3 {
 #customerName,
 #customerPhone,
 #email {
-  margin-top: 10px;
+  margin-bottom: 10px;
   width: 100%;
   outline: none;
   border: none;
-  background-color: rgb(173, 173, 173);
+  background-color: rgb(218, 215, 215);
   padding: 10px;
   border-radius: 10px;
+}
+#full {
+  padding-top: 10px;
+}
+#absolute {
+  position: fixed;
+  top: 400px;
+  left: 10px;
+  text-decoration: none;
+  color: green;
+}
+#whatsapp {
+  font-size: 2rem;
+  color: green;
 }
 
 @media (max-width: 768px) {

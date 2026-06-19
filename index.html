@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Hi7</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://js.paystack.co/v1/inline.js"></script>
 </head>
 
@@ -300,13 +301,16 @@
                         </div>
                     </div>
                     <div class="cart-summary">
-                        <div class="summary-row"><span>Subtotal</span><span id="subtotal">#0</span></div>
-                        <div class="summary-row"><span>Delivery Fee</span><span id="deliveryFee">#0</span></div>
-                        <div class="summary-row total"><span>Total</span><span id="cartTotal">#0</span></div>
+                        <div class="summary-row"><span>Subtotal</span><span id="subtotal">₦0</span></div>
+                        <div class="summary-row"><span>Delivery Fee</span><span id="deliveryFee">₦0</span></div>
+                        <div class="summary-row total"><span>Total</span><span id="cartTotal">₦0</span></div>
                     </div>
                     <div class="checkout-row">
+                        <label id="full">Full Name</label>
                         <input type="text" id="customerName" placeholder="Your full name" />
+                        <label>Phone Number</label>
                         <input type="tel" id="customerPhone" placeholder="Phone number e.g 08012345678" />
+                        <label>Email</label>
                         <input type="email" id="email" placeholder="Email for receipt" />
                         <div class="center">
                             <button class="checkout-btn" onclick="checkOut()">Pay Now</button>
@@ -316,7 +320,9 @@
             </div>
         </div>
         <div class="center">
-            <a href="#" id="top">Move to top</a>
+            <a href="#" id="top"><i class="fas fa-arrow-up"></i></a>
+            <a href="https://wa.me/234 818 943 8717" id="absolute" target="_blank"><i id="whatsapp"
+                    class="fas fa-comment-dots"></i>Chat with us</a>
         </div>
     </main>
     <script src="script.js"></script>
