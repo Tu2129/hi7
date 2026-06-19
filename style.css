@@ -100,6 +100,9 @@ header {
   flex-direction: column;
   color: rgb(0, 0, 0);
 }
+.card-9 {
+  display: none;
+}
 .inner-card {
   flex: 0 1 100%;
   min-height: 200px;
@@ -264,12 +267,14 @@ h3 {
   .card-5,
   .card-6,
   .card-7,
-  .card-8 {
+  .card-8,
+  .card-9 {
     display: flex;
     flex: 0 1 80%;
     min-height: 400px;
     flex-direction: column;
     color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
   }
   .cards {
     width: 100%;
