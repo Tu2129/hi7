@@ -164,7 +164,7 @@ img {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
 }
 body {
   background-color: rgb(255, 255, 255);
@@ -289,6 +289,7 @@ h3 {
     flex-direction: column;
     color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
+    border-radius: 10px;
   }
   .cards {
     width: 100%;
