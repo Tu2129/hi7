@@ -110,11 +110,20 @@ let deliveryFee = 0;
 
 // Add To Cart
 function addToCart(btn, name, price) {
-  let existing = cart.find((i) => i.name === name);
+  const sizeSelect = btn.previousElementSibling;
+  const size = sizeSelect.value;
+
+  if (!size) {
+    alert("please Select a size!");
+    return;
+  }
+
+  const itemName = `${name} (${size})`;
+  let existing = cart.find((i) => i.name === itemName);
   if (existing) {
     existing.qty++;
   } else {
-    cart.push({ name, price, qty: 1 });
+    cart.push({ name: itemName, price, qty: 1 });
   }
 
   btn.textContent = "Added";

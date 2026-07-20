@@ -99,6 +99,7 @@ header {
   background-color: rgb(255, 255, 255);
   flex-direction: column;
   color: rgb(0, 0, 0);
+  border-radius: 10px;
 }
 .card-9 {
   display: none;
@@ -135,6 +136,17 @@ header {
   color: white;
   padding: 5px 5px;
 }
+.size-select {
+  outline: none;
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+.size-select:focus {
+  border-color: #000;
+}
 .add-btn {
   text-decoration: none;
   background-color: rgb(0, 17, 255);
@@ -151,6 +163,7 @@ img {
   height: 100%;
   width: 100%;
   object-fit: cover;
+  border-radius: 10px;
 }
 body {
   background-color: rgb(255, 255, 255);
