@@ -7,9 +7,8 @@
   font-family: "poppins", sans-serif;
 }
 .logo {
-  display: none;
   width: 100px;
-  height: 50px;
+  height: 100px;
 }
 #mage {
   height: 100%;
@@ -28,7 +27,7 @@ header {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 10px 0;
+  padding-bottom: 10px;
 }
 .collection {
   color: rgb(160, 123, 0);
@@ -138,11 +137,13 @@ header {
 }
 .size-select {
   outline: none;
+  border: none;
   width: 100%;
   padding: 8px;
   border-radius: 8px;
   margin-bottom: 8px;
   cursor: pointer;
+  background-color: rgb(218, 215, 215);
 }
 .size-select:focus {
   border-color: #000;
