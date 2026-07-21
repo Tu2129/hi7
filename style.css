@@ -137,7 +137,7 @@ header {
 }
 .size-select {
   outline: none;
-  border: none;
+  border: 1px solid #e0e0e0;
   width: 100%;
   padding: 8px;
   border-radius: 8px;
