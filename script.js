@@ -104,6 +104,41 @@ const lgaData = {
   },
 };
 
+const itemsPerPage = 3;
+let currentPage = 1;
+
+function paginateCards() {
+  const cards = document.querySelectorAll(".card");
+  const isMobile = window.innerWidth < 768;
+
+  if (!isMobile) {
+    cards.forEach((card) => (card.style.display = ""));
+    document.getElementById("pageInfo").textContent = "";
+    return;
+  }
+  const totalPages = Math.ceil(cards.length / itemsPerPage);
+  const start = (currentPage - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+
+  cards.forEach((card, i) => {
+    card.style.display = i >= start && i < end ? "block" : "none";
+  });
+
+  document.getElementById("pageInfo").textContent =
+    `Page ${currentPage} of ${totalPages}`;
+  document.getElementById("prevBtn").disabled = currentPage === 1;
+  document.getElementById("nextBtn").disabled = currentPage === totalPages;
+}
+
+function changePage(direction) {
+  currentPage += direction;
+  paginateCards();
+}
+
+// Run on load
+window.addEventListener("resize", paginateCards);
+document.addEventListener("DOMContentLoaded", paginateCards);
+
 /* cart and delivery */
 let cart = [];
 let deliveryFee = 0;

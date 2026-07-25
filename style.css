@@ -35,7 +35,7 @@ header {
 #top {
   outline: none;
   text-decoration: none;
-  background-color: blue;
+  background-color: #000;
   padding: 10px;
   border-radius: 10px;
   margin-top: 15px;
@@ -50,7 +50,7 @@ header {
 .cart-toggle {
   outline: none;
   border: none;
-  background-color: blue;
+  background-color: #000;
   border-radius: 5px;
   padding: 5px;
   color: white;
@@ -73,7 +73,7 @@ header {
   gap: 10px;
 }
 .customized {
-  background-color: rgb(23, 0, 128);
+  background-color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,14 +84,7 @@ header {
   color: white;
   font-size: 1rem;
 }
-.card-1,
-.card-2,
-.card-3,
-.card-4,
-.card-5,
-.card-6,
-.card-7,
-.card-8 {
+.card {
   display: flex;
   flex: 0 1 20%;
   min-height: 400px;
@@ -104,8 +97,11 @@ header {
   display: none;
 }
 .inner-card {
-  flex: 0 1 100%;
+  flex: 0 1 20%;
   min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .inline-card {
   flex: 0 1 100%;
@@ -150,9 +146,9 @@ header {
 }
 .add-btn {
   text-decoration: none;
-  background-color: rgb(0, 17, 255);
+  background-color: #000;
   border-radius: 5px;
-  color: white;
+  color: #fff;
   padding: 5px 5px;
   outline: none;
   border: none;
@@ -162,9 +158,8 @@ header {
 }
 img {
   height: 100%;
-  width: 100%;
+  width: auto;
   object-fit: cover;
-  border-radius: 10px 10px 0 0;
 }
 body {
   background-color: rgb(255, 255, 255);
@@ -204,14 +199,14 @@ body {
   justify-content: center;
 }
 h3 {
-  color: rgb(0, 17, 255);
+  color: #000;
 }
 .checkout-btn {
   margin-top: 10px;
   padding: 10px;
   border: none;
   outline: none;
-  background-color: blue;
+  background-color: #000;
   text-align: center;
   border-radius: 5px;
   align-items: center;
@@ -274,15 +269,7 @@ h3 {
 }
 
 @media (max-width: 768px) {
-  .card-1,
-  .card-2,
-  .card-3,
-  .card-4,
-  .card-5,
-  .card-6,
-  .card-7,
-  .card-8,
-  .card-9 {
+  .card {
     display: flex;
     flex: 0 1 80%;
     min-height: 400px;

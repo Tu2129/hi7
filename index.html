@@ -33,9 +33,9 @@
             </div>
             <div class="cards">
                 <!--The first card Element-->
-                <div class="card-1">
+                <div class="card">
                     <div class="inner-card">
-                        <img src="relax.png" alt="shirt">
+                        <img src="2relax.png" alt="shirt">
                     </div>
                     <div class="inline-card">
                         <p class="shirt-1">Black RELAX Tee</p>
@@ -53,9 +53,9 @@
                         <button class="add-btn" onclick="addToCart(this, 'Black RELAX Tee', 9000)">Add To Cart</button>
                     </div>
                 </div>
-                <div class="card-2">
+                <div class="card">
                     <div class="inner-card">
-                        <img src="green.png" alt="shirt">
+                        <img src="2green.png" alt="shirt">
                     </div>
                     <div class="inline-card">
                         <p class="shirt-1">Green Floral Line Art Tee</p>
@@ -74,9 +74,9 @@
                             Cart</button>
                     </div>
                 </div>
-                <div class="card-3">
+                <div class="card">
                     <div class="inner-card">
-                        <img src="shally.png" alt="shirt">
+                        <img src="2shally.png" alt="shirt">
                     </div>
                     <div class="inline-card">
                         <p class="shirt-1">Maroon "Shally Gold" Tee</p>
@@ -95,7 +95,7 @@
                             Cart</button>
                     </div>
                 </div>
-                <div class="card-4">
+                <div class="card">
                     <div class="inner-card">
                         <img src="imperfect.png" alt="shirt">
                     </div>
@@ -119,7 +119,7 @@
                             Cart</button>
                     </div>
                 </div>
-                <div class="card-5">
+                <div class="card">
                     <div class="inner-card">
                         <img src="perfect.png" alt="shirt">
                     </div>
@@ -142,9 +142,9 @@
                             Cart</button>
                     </div>
                 </div>
-                <div class="card-6">
+                <div class="card">
                     <div class="inner-card">
-                        <img src="work of art.png" alt="shirt">
+                        <img src="work-of-art.png" alt="shirt">
                     </div>
                     <div class="inline-card">
                         <p class="shirt-1">Charcoal "Work Of Art" Tee
@@ -167,7 +167,7 @@
                             Cart</button>
                     </div>
                 </div>
-                <div class="card-7">
+                <div class="card">
                     <div class="inner-card">
                         <img src="brake.png" alt="shirt">
                     </div>
@@ -193,7 +193,7 @@
                             Cart</button>
                     </div>
                 </div>
-                <div class="card-7">
+                <div class="card">
                     <div class="inner-card">
                         <img src="breathe.png" alt="shirt">
                     </div>
@@ -219,9 +219,9 @@
                             Cart</button>
                     </div>
                 </div>
-                <div class="card-7">
+                <div class="card">
                     <div class="inner-card">
-                        <img src="God First Sis.jpeg" alt="shirt">
+                        <img src="God-First-Sis.png" alt="shirt">
                     </div>
                     <div class="inline-card">
                         <p class="shirt-1">White "God First Sis." Tee
@@ -245,9 +245,9 @@
                             Cart</button>
                     </div>
                 </div>
-                <div class="card-7">
+                <div class="card">
                     <div class="inner-card">
-                        <img src="moon white.jpeg" alt="shirt">
+                        <img src="moon-white.png" alt="shirt">
                     </div>
                     <div class="inline-card">
                         <p class="shirt-1">White Moon Climber Tee
@@ -271,9 +271,9 @@
                             Cart</button>
                     </div>
                 </div>
-                <div class="card-7">
+                <div class="card">
                     <div class="inner-card">
-                        <img src="moon.jpeg" alt="shirt">
+                        <img src="moon.png" alt="shirt">
                     </div>
                     <div class="inline-card">
                         <p class="shirt-1">Black Moon Climber Tee
@@ -297,9 +297,9 @@
                             Cart</button>
                     </div>
                 </div>
-                <div class="card-7">
+                <div class="card">
                     <div class="inner-card">
-                        <img src="God first.jpeg" alt="shirt">
+                        <img src="God-first.png" alt="shirt">
                     </div>
                     <div class="inline-card">
                         <p class="shirt-1">Black "God First Bro." Tee
@@ -323,9 +323,9 @@
                             Cart</button>
                     </div>
                 </div>
-                <div class="card-9">
+                <div class="card">
                     <div class="inner-card">
-                        <img src="juice.jpeg" alt="shirt">
+                        <img src="juice.png" alt="shirt">
                     </div>
                     <div class="inline-card">
                         <p class="shirt-1">White Graphic Tee — Artist Edition
@@ -351,6 +351,16 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div
+            style="text-align:center; padding: 20px; display:flex; justify-content:center; align-items:center; gap:16px; background-color: rgb(153, 153, 153);">
+            <button id="prevBtn" onclick="changePage(-1)"
+                style="background:#000; color:#fff; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-weight:700;">←
+                Prev</button>
+            <span id="pageInfo" style="font-weight:600; font-size:0.95rem;"></span>
+            <button id="nextBtn" onclick="changePage(1)"
+                style="background:#000; color:#fff; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-weight:700;">Next
+                →</button>
         </div>
         <div class="video">
             <video autoplay loop muted>
