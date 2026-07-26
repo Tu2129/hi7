@@ -325,7 +325,10 @@ h3 {
   }
   #prevBtn,
   #nextBtn,
-  #pageInfo {
+  #pageInfo,
+  #prevBut,
+  #nextBut,
+  #pageInf {
     display: flex;
   }
 }
