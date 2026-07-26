@@ -104,7 +104,38 @@ const lgaData = {
   },
 };
 
-const itemsPerPage = 3;
+function isMobile() {
+  return window.matchMedia(`(max-width: 768px)`).matches;
+}
+
+function setupReadMore(btn) {
+  const desc = btn.previousElementSibling;
+  if (isMobile()) {
+    btn.style.display = "inline-block";
+    desc.classList.add("clamped");
+  } else {
+    btn.style.display = "none";
+    desc.classList.remove("clamped");
+  }
+}
+
+document.querySelectorAll(".read-more-btn").forEach((btn) => {
+  const desc = btn.previousElementSibling;
+  setupReadMore(btn);
+
+  btn.addEventListener("click", () => {
+    desc.classList.toggle("clamped");
+    btn.textContent = desc.classList.contains("clamped")
+      ? "Read more"
+      : "Read less";
+  });
+  window.addEventListener("resize", () => {
+    setupReadMore(btn);
+    btn.textContent = "Read more";
+  });
+});
+
+const itemsPerPage = 4;
 let currentPage = 1;
 
 function paginateCards() {

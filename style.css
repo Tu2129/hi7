@@ -114,7 +114,6 @@ header {
   margin-bottom: 10px;
 }
 .italic {
-  font-family: "Times New Roman", Times, serif;
   font-size: 12px;
   display: -webkit-box;
 }
@@ -123,6 +122,21 @@ header {
   margin-bottom: 10px;
   font-size: 12px;
   display: -webkit-box;
+}
+.read-more-btn{
+  display: none;
+  background: none;
+  border: none;
+  color: blue;
+  font-size: 12px;
+  cursor: pointer;
+}
+.description.clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .price {
   font-weight: bold;
@@ -166,6 +180,12 @@ img {
   width: auto;
   object-fit: cover;
 }
+#mgi{
+  height: 200px;
+  width: 163px;
+  object-fit: cover;
+}
+
 body {
   background-color: rgb(255, 255, 255);
 }
@@ -284,7 +304,7 @@ h3 {
 @media (max-width: 768px) {
   .card {
     display: flex;
-    flex: 0 1 80%;
+    flex: 0 1 163px;
     min-height: 400px;
     flex-direction: column;
     color: rgb(0, 0, 0);
@@ -331,4 +351,24 @@ h3 {
   #pageInf {
     display: flex;
   }
+  img {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
 }
+#mgi{
+  height: 200px;
+  width: 163px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+  .description {
+  font-family: "Times New Roman", Times, serif;
+  margin-bottom: 0;
+  font-size: 12px;
+  display: -webkit-box;
+}
+}
+// 5: 57
+// 100
