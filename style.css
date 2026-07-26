@@ -110,14 +110,19 @@ header {
 }
 .shirt-1 {
   font-weight: bold;
+  font-size: 14px;
   margin-bottom: 10px;
 }
 .italic {
   font-family: "Times New Roman", Times, serif;
+  font-size: 12px;
+  display: -webkit-box;
 }
 .description {
   font-family: "Times New Roman", Times, serif;
   margin-bottom: 10px;
+  font-size: 12px;
+  display: -webkit-box;
 }
 .price {
   font-weight: bold;
@@ -267,6 +272,11 @@ h3 {
   font-size: 2rem;
   color: green;
 }
+/*#prevBtn,
+#nextBtn,
+#pageInfo {
+  display: none;
+}*/
 
 @media (max-width: 768px) {
   .card {
@@ -292,7 +302,7 @@ h3 {
     margin-top: 20px;
     display: flex;
     width: 100%;
-    height: 500px;
+    height: 400px;
     padding: 0 37px;
     background-color: rgb(153, 153, 153);
   }
@@ -309,5 +319,10 @@ h3 {
     flex: 0 1 80%;
     min-height: 400px;
     background-color: white;
+  }
+  #prevBtn,
+  #nextBtn,
+  #pageInfo {
+    display: flex;
   }
 }

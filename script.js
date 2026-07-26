@@ -139,6 +139,42 @@ function changePage(direction) {
 window.addEventListener("resize", paginateCards);
 document.addEventListener("DOMContentLoaded", paginateCards);
 
+const itemsPerp = 2;
+let currPage = 1;
+
+function pagination() {
+  const plains = document.querySelectorAll(".plain");
+  const isMobile = window.innerWidth < 768;
+
+  if (!isMobile) {
+    plains.forEach((plain) => (plain.style.display = ""));
+    document.getElementById("pagInf").textContent = "";
+    return;
+  }
+
+  const pages = Math.ceil(plains.length / itemsPerp);
+  const begin = (currPage - 1) * itemsPerp;
+  const stop = begin + itemsPerp;
+
+  plains.forEach((plain, r) => {
+    plain.style.display = r >= begin && r < stop ? "block" : "none";
+  });
+
+  document.getElementById("pageInf").textContent =
+    `Page ${currPage} of ${pages}`;
+  document.getElementById("prevBut").disabled = currPage === 1;
+  document.getElementById("nextBut").disabled = currPage === pages;
+}
+
+function changeP(direction) {
+  currPage += direction;
+  pagination();
+}
+
+//Run on load
+window.addEventListener("resize", pagination);
+document.addEventListener("DOMContentLoaded", pagination);
+
 /* cart and delivery */
 let cart = [];
 let deliveryFee = 0;
