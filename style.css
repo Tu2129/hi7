@@ -272,11 +272,14 @@ h3 {
   font-size: 2rem;
   color: green;
 }
-/*#prevBtn,
+#prevBtn,
 #nextBtn,
-#pageInfo {
+#pageInfo,
+#prevBut,
+#nextBut,
+#pageInf {
   display: none;
-}*/
+}
 
 @media (max-width: 768px) {
   .card {
