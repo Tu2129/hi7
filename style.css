@@ -317,7 +317,7 @@ h3 {
     flex-direction: row;
     flex-wrap: wrap;
     height: auto;
-    padding: 10px 9px;
+    padding: 10px 8px;
     gap: 10px;
   }
   .video,
@@ -369,6 +369,9 @@ h3 {
   font-size: 12px;
   display: -webkit-box;
 }
+}
+@media (max-width: 360px) {
+
 }
 // 5: 57
 // 100
