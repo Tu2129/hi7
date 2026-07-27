@@ -371,7 +371,9 @@ h3 {
 }
 }
 @media (max-width: 360px) {
-
+  .cards {
+    padding: 10px 5px;
+  }
 }
 // 5: 57
 // 100
